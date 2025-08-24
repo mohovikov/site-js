@@ -1,4 +1,5 @@
-import initTimeago from './js/timeago'
+import $ from 'jquery'
+import initTimeago from '../timeago'
 
 $('#logsModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget)

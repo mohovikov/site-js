@@ -1,13 +1,15 @@
-$(function() {
-  function updateOutput() {
-    const bbcode = $("#userpage").val()
-    const html = bbcodeToHtml(bbcode)
-    $("#userpage-preview").html(html)
-  }
+import $ from 'jquery'
+import { bbcodeToHtml } from 'bootstrap-bbcode'
 
-  // Первичная инициализация
-  updateOutput()
+export function updateOutput() {
+  const $input = $("#userpage")
+  const $preview = $("#userpage-preview")
 
-  // Автообновление при вводе
-  $("#userpage").on("input", updateOutput)
-})
+  if (!$input.length || !$preview.length) return
+
+  const bbcode = $input.val() || ""
+  const html = bbcodeToHtml(bbcode)
+  $preview.html(html)
+}
+
+$("#userpage").on("input", updateOutput)

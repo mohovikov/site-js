@@ -1,4 +1,4 @@
-const { format } = timeago
+import { format } from 'timeago.js'
 
 export default function initTimeago() {
   document.querySelectorAll('time.js-timeago').forEach(el => {
@@ -6,7 +6,6 @@ export default function initTimeago() {
     if (!utcStr) return
 
     let isoString = utcStr.replace(' ', 'T').split('.')[0] + 'Z'
-    console.log(isoString)
     let date = new Date(isoString)
 
     el.textContent = format(date, 'ru')
