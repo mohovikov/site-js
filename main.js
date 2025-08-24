@@ -1,13 +1,21 @@
-import './ajax/logs'
-import './chart'
+import * as bootstrap from "bootstrap"
+
+import './js/ajax/logs'
+import './js/chart'
 import './js/price'
-import './privileges'
+import './js/privileges'
 import initTimeago from './js/timeago'
-import './js/toast'
 import './js/userpage'
 
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+  new bootstrap.Tooltip(el)
+})
+
+document.querySelectorAll('.toast').forEach(function (toastEl, index) {
+  let delay = 3000 + (index * 500)
+  let toast = new bootstrap.Toast(toastEl, { delay: delay })
+  toast.show()
+})
 
 initTimeago()
 console.log("Webpack bundle loaded ✅")
